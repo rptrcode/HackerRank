@@ -1,0 +1,18 @@
+Node* MergeLists(Node *headA, Node* headB)
+{
+    if(!headA)
+        return headB;
+    if(!headB)
+        return headA;
+    Node* result;
+    
+    if((headA->data) <=(headB->data)) {
+        result= headA;
+        result->next = MergeLists(headA->next, headB); 
+    } else {
+        result = headB;
+        result->next = MergeLists(headA, headB->next); 
+    }
+    
+    return result;
+}
